@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Deposito</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0f1923;
+        }
+
+        input {
+            margin-bottom: 30px;
+            border: 2px solid #00a6ff;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #00a6ff;
+            border: none;
+            color: #ffffff;
+            border-radius: 5px;
+            cursor: pointer
+        }
+        .layout-deposit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            box-shadow: 0 0 20px #00a6ff;
+            background-color: white;
+            padding: 20px;
+            border-radius: 30px;
+            width: 250px;
+            height: 190px;
+        }
+
+        .writing {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-family: sans-serif;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<div class="layout-deposit">
+    <label class="writing">
+        <span><b>Deposito</b></span>
+        <input id="amount" autofocus/>
+    </label>
+
+    <button id="deposit">
+        <b>Depositar</b>
+    </button>
+</div>
+
+<script>
+    document.getElementById("deposit")
+        .addEventListener("click", () => {
+            let amount = Number(document.getElementById("amount").value ?? 0);
+
+            amount += Number(localStorage.getItem("amount") ?? 0);
+
+            localStorage.setItem("amount", amount.toString());
+
+            window.location.href = "index.php";
+        });
+</script>
+</body>
+</html>
